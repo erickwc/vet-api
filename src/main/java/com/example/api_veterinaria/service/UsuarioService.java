@@ -10,4 +10,6 @@ public interface UsuarioService {
     List<UsuarioDTO> listarUsuarios();
     Optional<UsuarioDTO> buscarPorId(Integer id);
     void eliminarUsuario(Integer id);
+    UsuarioDTO actualizarUsuario(Integer id, UsuarioDTO dto);
+
 }

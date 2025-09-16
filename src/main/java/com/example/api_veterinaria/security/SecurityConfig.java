@@ -29,7 +29,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // Login y registro públicos
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/usuarios/**").permitAll()// Login y registro públicos
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
@@ -43,7 +44,7 @@ public class SecurityConfig {
     // Bean para encriptar la contraseña con BCrypt
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return org.springframework.security.crypto.password.NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
 
